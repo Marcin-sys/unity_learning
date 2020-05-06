@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using JetBrains.Annotations;
 
-public class SpawnCircle : MonoBehaviour
+public class SpawnCircle2 : MonoBehaviour
 {
-    public static SpawnCircle current;
+
     // Start is called before the first frame update
     #region fields
     // time limit's
@@ -51,60 +52,51 @@ public class SpawnCircle : MonoBehaviour
 
         Debug.Log("Time to first spawn:" + TIME_SPAN + "s");
     }
-    private void Awake()
-    {
-        current = this;
-    }
-    public event Action onTimerTimeout;
-    /*public void timeout()
-    {
-        if (onTimerTimeout != null)
-        {
-            onTimerTimeout;
-        }
-    }*/
+
     private void GenerateArray()
+    {
+        for (float i = 0; i < count_segments;)                 // generate array with posible position for count_segments
         {
-            for (float i = 0; i < count_segments;)                 // generate array with posible position for count_segments
-            {
-                positionList.Add(new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)) * radius + center);
-                store_flag.Add(null);
-            }
+            positionList.Add(new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)) * radius + center);
+            store_flag.Add(null);
         }
-
-    private bool GenerateObject()
-        {
-            int random_position_id = UnityEngine.Random.Range(0, positionList.Count - 1);  // random position for object
-
-
-            if (store_flag[random_position_id] == null)
-            {
-                Vector3 position_for_temp = positionList[random_position_id];                   // position for temp
-
-                GameObject temporary_object = objecttoSpawm[UnityEngine.Random.Range(0, objecttoSpawm.Count)];
-
-                Instantiate(temporary_object);
-                temporary_object.transform.position = position_for_temp;
-                store_flag[random_position_id] = 1;                                          // change null to 1 in store_flag [random_position_id]
-
-            /*
-                temporary_object.set_time_to_death(UnityEngine.Random.Range(setTimeToDeathMin, setTimeToDeathMax));
-
-                temporary_object.my_object_id(random_position_id);
-*/
-                //temporary_object.connect("timeout", self, "on_Timer_timeout"); <----- do poprawy
-
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-    
-
     }
 
-    /*private void onTimerTimeout(int id,GameObject referance)
+    public bool GenerateObject()
+    {
+        
+
+        int random_position_id = UnityEngine.Random.Range(0, positionList.Count - 1);  // random position for object
+
+
+        if (store_flag[random_position_id] == null)
+        {
+            Vector3 position_for_temp = positionList[random_position_id];                   // position for temp
+
+            GameObject temporary_object = objecttoSpawm[UnityEngine.Random.Range(0, objecttoSpawm.Count)];
+
+            Instantiate(temporary_object);
+            temporary_object.transform.position = position_for_temp;
+            store_flag[random_position_id] = 1;                                          // change null to 1 in store_flag [random_position_id]
+
+ /*
+            temporary_object.SetTimeToDeath(UnityEngine.Random.Range(setTimeToDeathMin, setTimeToDeathMax));
+
+            temporary_object.my_object_id(random_position_id);
+
+            temporary_object.connect("timeout", self, "on_Timer_timeout"); < ----- do poprawy
+*/            
+                return false;
+        }
+        else
+        {
+            return true;
+        }
+        
+    }
+    
+    /*
+    private void onTimerTimeout(int id,GameObject referance)
         {
         if (number_objects_in_scene > number_of_object_min)
             {
@@ -115,7 +107,7 @@ public class SpawnCircle : MonoBehaviour
             Debug.Log("ilosc obiektow: " + number_objects_in_scene);
             }
         }
-        */
+    */
 
     // Update is called once per frame
     void Update()
@@ -129,9 +121,9 @@ public class SpawnCircle : MonoBehaviour
 
             // Reset time_left.
             timeLeft = 0;
-
+            
             bool temp = GenerateObject();
-
+            
             // If in time limit nothing spawn then fast forward.
             if (temp == true)
             {
@@ -144,9 +136,10 @@ public class SpawnCircle : MonoBehaviour
 
                 Debug.Log("ilosc obiektow: " + number_objects_in_scene);
             }
+            
         }
     }
 
 
-    
+
 }
