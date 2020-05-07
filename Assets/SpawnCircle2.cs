@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-using JetBrains.Annotations;
-using UnityEngine.Assertions.Must;
-using System.Threading;
 using UnityEngine.Events;
 
 public class SpawnCircle2 : MonoBehaviour
@@ -51,9 +48,9 @@ public class SpawnCircle2 : MonoBehaviour
 
         GenerateArray();
 
-        int TIME_SPAN = UnityEngine.Random.Range(timeSpanMin, timeSpanMax);
+        timeSpan = UnityEngine.Random.Range(timeSpanMin, timeSpanMax);
 
-        Debug.Log("Time to first spawn:" + TIME_SPAN + "s");
+        Debug.Log("Time to first spawn:" + timeSpan + "s");
     }
 
     private void GenerateArray()
@@ -81,8 +78,8 @@ public class SpawnCircle2 : MonoBehaviour
             Instantiate(temporary_object);
             temporary_object.transform.position = position_for_temp;
             store_flag[random_position_id] = 1;                                          // change null to 1 in store_flag [random_position_id]
-           /*
-            GameObject temp = temporary_object.GetComponent<ObjectLive>();
+           
+            ObjectLive temp = temporary_object.GetComponent<ObjectLive>();
             
             temp.SetTimeToDeath(UnityEngine.Random.Range(setTimeToDeathMin, setTimeToDeathMax));
 
@@ -91,8 +88,8 @@ public class SpawnCircle2 : MonoBehaviour
             {
                 TimeoutEvent = new UnityEvent();
             }
-            TimeoutEvent.AddListener(temp.Death());
-            */
+            TimeoutEvent.AddListener(temp.Death);
+            
            // temp.connect("timeout", self, "on_Timer_timeout");
            
                 return false;
@@ -105,7 +102,7 @@ public class SpawnCircle2 : MonoBehaviour
         
     }
     
-    /*
+    
     private void onTimerTimeout(int id,GameObject referance)
         {
         if (number_objects_in_scene > number_of_object_min)
@@ -113,11 +110,11 @@ public class SpawnCircle2 : MonoBehaviour
             store_flag[id] = null;   // clear position in  storeFlaf
             number_objects_in_scene -= 1;
 
-            referance.death();
+            //referance.death();
             Debug.Log("ilosc obiektow: " + number_objects_in_scene);
             }
         }
-    */
+    
 
     // Update is called once per frame
     void Update()

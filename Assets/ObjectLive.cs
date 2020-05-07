@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+using UnityEngine.Events;
 public class ObjectLive : MonoBehaviour
 {
-
+    UnityEvent TimeoutEvent;
     // Start is called before the first frame update
     #region fields
     float timeLeft = 0;
@@ -40,7 +38,7 @@ public class ObjectLive : MonoBehaviour
         if (timeLeft > timeToDeath)
         {
             // wystartuj z eventem 
-            //TimeoutEvent.Invoke();
+            TimeoutEvent.Invoke();
             timeLeft = 0;
         }
     }
