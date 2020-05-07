@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectScript : MonoBehaviour
+public class ObjectLive : MonoBehaviour
 {
 
     // Start is called before the first frame update
@@ -24,7 +23,7 @@ public class ObjectScript : MonoBehaviour
         timeToDeath = time;
     }
 
-    public void MyObjectID(int x)
+    public void MyObjectId(int x)
     {
         id = x;
     }
@@ -41,7 +40,7 @@ public class ObjectScript : MonoBehaviour
         if (timeLeft > timeToDeath)
         {
             // wystartuj z eventem 
-            GameEvents.current.timeout();
+            //TimeoutEvent.Invoke();
             timeLeft = 0;
         }
     }

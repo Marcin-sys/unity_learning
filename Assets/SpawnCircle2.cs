@@ -2,10 +2,13 @@
 using UnityEngine;
 using System;
 using JetBrains.Annotations;
+using UnityEngine.Assertions.Must;
+using System.Threading;
+using UnityEngine.Events;
 
 public class SpawnCircle2 : MonoBehaviour
 {
-
+    UnityEvent TimeoutEvent;
     // Start is called before the first frame update
     #region fields
     // time limit's
@@ -78,15 +81,22 @@ public class SpawnCircle2 : MonoBehaviour
             Instantiate(temporary_object);
             temporary_object.transform.position = position_for_temp;
             store_flag[random_position_id] = 1;                                          // change null to 1 in store_flag [random_position_id]
+           /*
+            GameObject temp = temporary_object.GetComponent<ObjectLive>();
+            
+            temp.SetTimeToDeath(UnityEngine.Random.Range(setTimeToDeathMin, setTimeToDeathMax));
 
- /*
-            temporary_object.SetTimeToDeath(UnityEngine.Random.Range(setTimeToDeathMin, setTimeToDeathMax));
-
-            temporary_object.my_object_id(random_position_id);
-
-            temporary_object.connect("timeout", self, "on_Timer_timeout"); < ----- do poprawy
-*/            
+            temp.MyObjectId(random_position_id);
+            if (TimeoutEvent == null)
+            {
+                TimeoutEvent = new UnityEvent();
+            }
+            TimeoutEvent.AddListener(temp.Death());
+            */
+           // temp.connect("timeout", self, "on_Timer_timeout");
+           
                 return false;
+
         }
         else
         {
