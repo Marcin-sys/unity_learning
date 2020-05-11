@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class SpawnCircle2 : MonoBehaviour
 {
-    UnityEvent TimeoutEvent;
+    
     // Start is called before the first frame update
     #region fields
     // time limit's
@@ -36,7 +36,7 @@ public class SpawnCircle2 : MonoBehaviour
 
 
     List<Vector3> positionList = new List<Vector3>();
-    int number_objects_in_scene = 0;
+    int objects_in_scene = 0;
     int random_position_id;
 
     [SerializeField] private List<GameObject> objecttoSpawm;
@@ -84,11 +84,7 @@ public class SpawnCircle2 : MonoBehaviour
             temp.SetTimeToDeath(UnityEngine.Random.Range(setTimeToDeathMin, setTimeToDeathMax));
 
             temp.MyObjectId(random_position_id);
-            if (TimeoutEvent == null)
-            {
-                TimeoutEvent = new UnityEvent();
-            }
-            TimeoutEvent.AddListener(temp.Death);
+			temp.OnDeathEvent += onTimerTimeout;
             
            // temp.connect("timeout", self, "on_Timer_timeout");
            
@@ -103,17 +99,17 @@ public class SpawnCircle2 : MonoBehaviour
     }
     
     
-    private void onTimerTimeout(int id,GameObject referance)
+    private void onTimerTimeout(ObjectLive obj, int id)
+    {
+        if (objects_in_scene > number_of_object_min)
         {
-        if (number_objects_in_scene > number_of_object_min)
-            {
             store_flag[id] = null;   // clear position in  storeFlaf
-            number_objects_in_scene -= 1;
-
+            objects_in_scene -= 1;
+			obj.Death();
             //referance.death();
-            Debug.Log("ilosc obiektow: " + number_objects_in_scene);
-            }
+            Debug.Log("ilosc obiektow: " + objects_in_scene);
         }
+    }
     
 
     // Update is called once per frame
@@ -136,12 +132,12 @@ public class SpawnCircle2 : MonoBehaviour
             {
                 timeSpan = 0;
             }
-            else if (number_objects_in_scene < number_of_object_max)
+            else if (objects_in_scene < number_of_object_max)
             {
-                number_objects_in_scene += 1; // count objects
+                objects_in_scene += 1; // count objects
                 Debug.Log("Time to next spawn:" + timeSpan + "s");
 
-                Debug.Log("ilosc obiektow: " + number_objects_in_scene);
+                Debug.Log("ilosc obiektow: " + objects_in_scene);
             }
             
         }

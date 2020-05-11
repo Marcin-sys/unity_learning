@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System;
 public class ObjectLive : MonoBehaviour
 {
-    UnityEvent TimeoutEvent;
-    // Start is called before the first frame update
-    #region fields
-    float timeLeft = 0;
-    int timeToDeath = 0;
-    int id = 0;
+	public event Action<ObjectLive, int> OnDeathEvent;
+	// Start is called before the first frame update
+	#region fields
+	private float timeLeft = 0;
+    private int timeToDeath = 0;
+    private int id = 0;
     #endregion
-
 
     private void Start()
     {
@@ -38,7 +38,7 @@ public class ObjectLive : MonoBehaviour
         if (timeLeft > timeToDeath)
         {
             // wystartuj z eventem 
-            TimeoutEvent.Invoke();
+            OnDeathEvent.Invoke(this, id);
             timeLeft = 0;
         }
     }
