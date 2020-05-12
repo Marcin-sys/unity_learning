@@ -13,8 +13,8 @@ public class SpawnCircle2 : MonoBehaviour
     int timeSpanMin = 1;                          // time period min till function spawn another object
     int timeSpan;                                  // time period till function spawn another object
     float timeLeft = 0;                              // timer
-    int setTimeToDeathMax = 25;
-    int setTimeToDeathMin = 10;
+    float setTimeToDeathMax = 25f;
+    float setTimeToDeathMin = 10f;
 
     // circle
     float radius = 20;                                // circle radius
@@ -55,7 +55,7 @@ public class SpawnCircle2 : MonoBehaviour
 
     private void GenerateArray()
     {
-        for (float i = 0; i < count_segments;)                 // generate array with posible position for count_segments
+        for (int i = 0; i < count_segments; ++i)                 // generate array with posible position for count_segments
         {
             positionList.Add(new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)) * radius + center);
             store_flag.Add(null);

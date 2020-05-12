@@ -6,9 +6,9 @@ public class ObjectLive : MonoBehaviour
 	public event Action<ObjectLive, int> OnDeathEvent;
 	// Start is called before the first frame update
 	#region fields
-	private float timeLeft = 0;
-    private int timeToDeath = 0;
-    private int id = 0;
+	[SerializeField] private float timeLeft = 0;
+    [SerializeField] private float timeToDeath = 0;
+    [SerializeField] private int id = 0;
     #endregion
 
     private void Start()
@@ -16,7 +16,7 @@ public class ObjectLive : MonoBehaviour
 
     }
 
-    public void SetTimeToDeath(int time)
+    public void SetTimeToDeath(float time)
     {
         timeToDeath = time;
     }
