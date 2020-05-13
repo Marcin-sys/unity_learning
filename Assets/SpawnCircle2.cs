@@ -62,7 +62,7 @@ public class SpawnCircle2 : MonoBehaviour
         }
     }
 
-    public bool GenerateObject()
+    private int GenerateObject()
     {
         
 
@@ -73,47 +73,37 @@ public class SpawnCircle2 : MonoBehaviour
         {
             Vector3 position_for_temp = positionList[random_position_id];                   // position for temp
 
-            GameObject temporary_object = objecttoSpawm[UnityEngine.Random.Range(0, objecttoSpawm.Count)];
-
-            Instantiate(temporary_object);
+            GameObject temporary_object = Instantiate(objecttoSpawm[UnityEngine.Random.Range(0, objecttoSpawm.Count)]);
             temporary_object.transform.position = position_for_temp;
             store_flag[random_position_id] = 1;                                          // change null to 1 in store_flag [random_position_id]
            
-            ObjectLive temp = temporary_object.GetComponent<ObjectLive>();
-            
+            VolatileObject temp = temporary_object.GetComponent<VolatileObject>();
             temp.SetTimeToDeath(UnityEngine.Random.Range(setTimeToDeathMin, setTimeToDeathMax));
 
             temp.MyObjectId(random_position_id);
-			temp.OnDeathEvent += onTimerTimeout;
-            
-           // temp.connect("timeout", self, "on_Timer_timeout");
-           
-                return false;
-
+			temp.OnTimeout.AddListener(OnObjectTimeout);
+			return 0;
         }
         else
         {
-            return true;
+            return 1;
         }
-        
     }
     
-    
-    private void onTimerTimeout(ObjectLive obj, int id)
+    public void OnObjectTimeout(VolatileObject obj, int id)
     {
         if (objects_in_scene > number_of_object_min)
         {
             store_flag[id] = null;   // clear position in  storeFlaf
-            objects_in_scene -= 1;
-			obj.Death();
-            //referance.death();
-            Debug.Log("ilosc obiektow: " + objects_in_scene);
+			obj.DestroyGameObject();
+			objects_in_scene -= 1;
+			//referance.death();
+			Debug.Log("ilosc obiektow: " + objects_in_scene);
         }
     }
-    
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
         timeLeft += Time.deltaTime;
 
@@ -125,17 +115,17 @@ public class SpawnCircle2 : MonoBehaviour
             // Reset time_left.
             timeLeft = 0;
             
-            bool temp = GenerateObject();
+            int result = GenerateObject();
             
             // If in time limit nothing spawn then fast forward.
-            if (temp == true)
+            if (result == 1)
             {
                 timeSpan = 0;
             }
             else if (objects_in_scene < number_of_object_max)
             {
                 objects_in_scene += 1; // count objects
-                Debug.Log("Time to next spawn:" + timeSpan + "s");
+                //Debug.Log("Time to next spawn:" + timeSpan + "s");
 
                 Debug.Log("ilosc obiektow: " + objects_in_scene);
             }
