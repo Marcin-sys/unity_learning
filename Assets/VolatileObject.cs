@@ -2,15 +2,15 @@
 using UnityEngine.Events;
 using System;
 
-[System.Serializable]
+[Serializable]
 public class TimeoutEvent : UnityEvent<VolatileObject, int>
 {
 }
 public class VolatileObject : MonoBehaviour
 {
-	[SerializeField] public TimeoutEvent OnTimeout = new TimeoutEvent();
+    #region fields
+    [SerializeField] public TimeoutEvent OnTimeout = new TimeoutEvent();
 	// Start is called before the first frame update
-	#region fields
 	[SerializeField] private float timeLeft = 0;
     [SerializeField] private float timeToDeath = 0;
     [SerializeField] private int id = 0;

@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objecttoSpawm:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 552387145089847789, guid: b081207d76f9b504e8be98fb73439065, type: 3}
+  - {fileID: 45598629423137689, guid: 8f8cd95e4548ac346900564532e2d118, type: 3}
+  - {fileID: 6510782101296081987, guid: 3419ba1c3f148d742a058fc7ce38cd07, type: 3}
