@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &205979478 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2424414069545928505, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+  m_PrefabInstance: {fileID: 1121828696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1121828696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,6 +138,26 @@ PrefabInstance:
     - target: {fileID: 147071438829683836, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424414069545928505, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424414069545928505, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424414069545928505, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424414069545928505, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424414069545928505, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3502741522076480394, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
       propertyPath: m_LocalPosition.x
@@ -182,6 +207,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3502741523454489351, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502741523454489351, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502741523454489351, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493666286197138316, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: gunTip
+      value: 
+      objectReference: {fileID: 205979478}
+    - target: {fileID: 6493666286197138316, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 2804716192420585735, guid: 3d7983d19f75ad540afcf6e502d8f61b, type: 3}
     - target: {fileID: 6984971409298698317, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
