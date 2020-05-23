@@ -8,10 +8,6 @@ public class PointerFollowing : MonoBehaviour
 	[SerializeField] private Transform gunTip;
 	[SerializeField] private GameObject bullet;
 
-	void Start()
-    {
-		PoolManager.instance.CreatePool(bullet, 3);
-	}
 	private void Update()
 	{
 		pointerPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -27,7 +23,7 @@ public class PointerFollowing : MonoBehaviour
 	{
 		//GameObject firedBullet = Instantiate(bullet, gunTip.position, gunTip.rotation);
 		//firedBullet.GetComponent<Rigidbody>().velocity = gunTip.up * 10f;
-		PoolManager.instance.ReuseObject(bullet, gunTip.position, gunTip.rotation);
+		PoolManager.Instance.ReuseObject(bullet, gunTip.position, gunTip.rotation);
 		
 	}
 }

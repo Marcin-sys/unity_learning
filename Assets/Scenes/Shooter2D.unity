@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 1004800603}
   - component: {fileID: 1004800602}
   m_Layer: 0
-  m_Name: Pooling
+  m_Name: Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7d9dd0893757f49afe7a0619ff1638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 2804716192420585735, guid: 3d7983d19f75ad540afcf6e502d8f61b, type: 3}
 --- !u!4 &1004800603
 Transform:
   m_ObjectHideFlags: 0
