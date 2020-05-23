@@ -10,8 +10,8 @@ public class PointerFollowing : MonoBehaviour
 
 	void Start()
     {
-
-    }
+		PoolManager.instance.CreatePool(bullet, 3);
+	}
 	private void Update()
 	{
 		pointerPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -25,7 +25,9 @@ public class PointerFollowing : MonoBehaviour
 	}
 	private void FireBullet()
 	{
-		GameObject firedBullet = Instantiate(bullet, gunTip.position, gunTip.rotation);
-		firedBullet.GetComponent<Rigidbody>().velocity = gunTip.up * 10f;
+		//GameObject firedBullet = Instantiate(bullet, gunTip.position, gunTip.rotation);
+		//firedBullet.GetComponent<Rigidbody>().velocity = gunTip.up * 10f;
+		PoolManager.instance.ReuseObject(bullet, gunTip.position, gunTip.rotation);
+		
 	}
 }

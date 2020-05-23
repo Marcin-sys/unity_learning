@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+
 	[SerializeField] private Rigidbody2D rb;
 	[SerializeField] private float speed;
 	[SerializeField] private Vector2 moveVelocity;
+	
     void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+
 	}
 
 	void Update()
