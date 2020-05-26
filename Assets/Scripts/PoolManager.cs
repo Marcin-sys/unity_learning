@@ -52,7 +52,7 @@ public class PoolManager : MonoBehaviour
 		}
 	}
 
-    public void ReuseObject(GameObject prefab, Vector3 position, Quaternion rotation)
+	public void ReuseObject(GameObject prefab, Vector3 position, Quaternion rotation)
     {
         int poolKey = prefab.GetInstanceID();
         if (pool.ContainsKey(poolKey))
@@ -70,6 +70,7 @@ public class PoolManager : MonoBehaviour
 					return;
 				}
 			}
+
 			IncreasePoolSize(prefab);
 			objectToReuse = pool[poolKey][i];
 			objectToReuse.SetActive(true);
