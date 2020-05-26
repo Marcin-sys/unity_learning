@@ -41,41 +41,22 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-	private void IncreasePoolSize(GameObject prefab)
+	private GameObject IncreasePoolSize(GameObject prefab)
 	{
 		int poolKey = prefab.GetInstanceID();
+		GameObject newObject = null;
 		for (int i = 0; i < basicPoolSize; ++i)
 		{
-			GameObject newObject = Instantiate(prefab) as GameObject;
+			newObject = Instantiate(prefab) as GameObject;
 			newObject.SetActive(false);
 			pool[poolKey].Add(newObject);
 		}
+		return newObject;
 	}
 
-	public void ReuseObject(GameObject prefab, Vector3 position, Quaternion rotation)
+	public GameObject ReuseObject(GameObject prefab)
     {
-        int poolKey = prefab.GetInstanceID();
-        if (pool.ContainsKey(poolKey))
-        {
-			int i = 0;
-			GameObject objectToReuse;
-			for (; i < pool[poolKey].Count; ++i)
-			{
-				if (!pool[poolKey][i].activeInHierarchy)
-				{
-					objectToReuse = pool[poolKey][i];
-					objectToReuse.SetActive(true);
-					objectToReuse.transform.position = position;
-					objectToReuse.transform.rotation = rotation;
-					return;
-				}
-			}
-
-			IncreasePoolSize(prefab);
-			objectToReuse = pool[poolKey][i];
-			objectToReuse.SetActive(true);
-			objectToReuse.transform.position = position;
-			objectToReuse.transform.rotation = rotation;
-		}
-    }
+		int poolKey = prefab.GetInstanceID();
+		return pool[poolKey].Find(e => !e.activeInHierarchy) ?? IncreasePoolSize(prefab);
+	}
 }

@@ -6,7 +6,7 @@ public class PointerFollowing : MonoBehaviour
 {
 	[SerializeField] private Vector3 pointerPosition;
 	[SerializeField] private Transform gunTip;
-	[SerializeField] private GameObject bullet;
+	[SerializeField] private GameObject bulletPrefab;
 
 	private void Update()
 	{
@@ -23,7 +23,9 @@ public class PointerFollowing : MonoBehaviour
 	{
 		//GameObject firedBullet = Instantiate(bullet, gunTip.position, gunTip.rotation);
 		//firedBullet.GetComponent<Rigidbody>().velocity = gunTip.up * 10f;
-		PoolManager.Instance.ReuseObject(bullet, gunTip.position, gunTip.rotation);
-		
+		GameObject bulletObject = PoolManager.Instance.ReuseObject(bulletPrefab);
+		bulletObject.SetActive(true);
+		bulletObject.transform.position = gunTip.position;
+		bulletObject.transform.rotation = gunTip.rotation;
 	}
 }

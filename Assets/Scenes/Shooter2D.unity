@@ -145,6 +145,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2424414069545928505, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
   m_PrefabInstance: {fileID: 1121828696}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &403819202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3502741522076480395, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+  m_PrefabInstance: {fileID: 1121828696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &403819206
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403819202}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &996411962 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7094363267127137570, guid: 3cfc8f72ac2f5a940a388c92cbed2853, type: 3}
@@ -259,6 +290,10 @@ PrefabInstance:
       objectReference: {fileID: 205979478}
     - target: {fileID: 6493666286197138316, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
       propertyPath: bullet
+      value: 
+      objectReference: {fileID: 2804716192420585735, guid: 3d7983d19f75ad540afcf6e502d8f61b, type: 3}
+    - target: {fileID: 6493666286197138316, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}
+      propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 2804716192420585735, guid: 3d7983d19f75ad540afcf6e502d8f61b, type: 3}
     - target: {fileID: 6984971409298698317, guid: 9dcea74c4f2b9c5409b7bd3eab56e472, type: 3}

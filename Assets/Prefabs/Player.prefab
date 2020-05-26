@@ -75,6 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointerPosition: {x: 0, y: 0, z: 0}
+  gunTip: {fileID: 2424414069545928505}
+  bulletPrefab: {fileID: 2804716192420585735, guid: 3d7983d19f75ad540afcf6e502d8f61b, type: 3}
 --- !u!1 &3315419885081730228
 GameObject:
   m_ObjectHideFlags: 0
